@@ -71,21 +71,33 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 # Project Path (Netflix-GPT)
-
--Create React App
--Install Tailwind
+- Create React App
+- Install Tailwind
+- Build Header
+- Rounting
+- Login Form
+    - Sign In
+    - Sign Up
+- Form Validation
+- Firebase Setup
+- Deploy app in production
+- Create a sign up account
+- Implemented Sigin API
+- Created User store with userSlice
+- Implement SignOut
+- Update Profile
 
 # Features
--Login/SignUp Screen(Before Authentication)
-    -SignIn/SignUp form
-    -Redirect to Browse Page
--Browse(After Authentication)
-    -Header
-    -Movies
-        -Trailer in Background
-        -Title and Description
-        -Movie Suggestion
-            -Movie List * N
--NetflixGPT
-    -Search bar
-    -Movie Suggestion
+- Login/SignUp Screen(Before Authentication)
+    - SignIn/SignUp form
+    - Redirect to Browse Page
+- Browse(After Authentication)
+    - Header
+    - Movies
+        - Trailer in Background
+        - Title and Description
+        - Movie Suggestion
+            - Movie List * N
+- NetflixGPT
+    - Search bar
+    - Movie Suggestion

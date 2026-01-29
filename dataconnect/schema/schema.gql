@@ -1,0 +1,47 @@
+type User @table {
+  displayName: String!
+  createdAt: Timestamp!
+  email: String
+  photoUrl: String
+}
+
+type PracticeArea @table {
+  user: User!
+  name: String!
+  createdAt: Timestamp!
+  description: String
+}
+
+type PracticeSession @table {
+  user: User!
+  practiceArea: PracticeArea!
+  sessionDate: Date!
+  durationMinutes: Int!
+  createdAt: Timestamp!
+  notes: String
+}
+
+type Goal @table {
+  user: User!
+  practiceArea: PracticeArea!
+  goalType: String!
+  targetValue: Float!
+  startDate: Date!
+  createdAt: Timestamp!
+  endDate: Date
+  description: String
+}
+
+type Task @table {
+  practiceArea: PracticeArea!
+  name: String!
+  createdAt: Timestamp!
+  description: String
+}
+
+type SessionTask @table {
+  practiceSession: PracticeSession!
+  task: Task!
+  completedAt: Timestamp!
+  notes: String
+}
