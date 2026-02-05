@@ -86,6 +86,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Created User store with userSlice
 - Implement SignOut
 - Update Profile
+- BugFix - Redirect User to SignUp and Browse page
+- Unsubscribe to onAuthStateChanged callback
+- Put hardcoded data to seperate constants file 
+- Fetch from TMDB Movies
+- Custom Hook for Now Playing Movies
+- Create movieSlice
+- Update Store with movies Data
+- Planning for MainContauiner & secondary container
+- Fetch Data for Trailer Video
+- Update Store with Trailer Video Data
+- Embedded the Yotube video and make it autoplay and mute
+- Tailwind Classes to make Main Container look awesome
+
 
 # Features
 - Login/SignUp Screen(Before Authentication)

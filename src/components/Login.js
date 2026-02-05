@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import Header from "./Header";
 import { checkValidation } from "../utils/validate";
-import { useNavigate } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -10,11 +9,11 @@ import {
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "../utils/userSlice";
+import { BACKGROUND_IMAGE, USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [validationMessage, setValidationMessage] = useState("");
-  const navigate = useNavigate();
   const Name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
@@ -48,24 +47,23 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: Name.current.value,
-            photoURL: "https://example.com/jane-q-user/profile.jpg",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
-              const { uid, email, displayName } = auth.currentUser;
+              const { uid, email, displayName, photoURL } = auth.currentUser;
               dispatch(
                 setUserInfo({
                   uid: uid,
                   email: email,
                   displayName: displayName,
+                  photoURL: photoURL,
                 }),
               );
-              navigate("/browse");
             })
             .catch((error) => {
               setValidationMessage("Profile update failed.");
               console.error("Error updating profile:", error);
             });
-          console.log("User signed up:", user);
           setValidationMessage("Sign up successful!");
         })
         .catch((error) => {
@@ -83,9 +81,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log("User signed in:", user);
           setValidationMessage("Sign in successful!");
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -102,8 +98,8 @@ const Login = () => {
       <div className="absolute">
         <img
           className="w-full h-screen object-cover "
-          src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f562aaf4-5dbb-4603-a32b-6ef6c2230136/dh0w8qv-9d8ee6b2-b41a-4681-ab9b-8a227560dc75.jpg/v1/fill/w_1192,h_670,q_70,strp/the_netflix_login_background__canada__2024___by_logofeveryt_dh0w8qv-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6Ii9mL2Y1NjJhYWY0LTVkYmItNDYwMy1hMzJiLTZlZjZjMjIzMDEzNi9kaDB3OHF2LTlkOGVlNmIyLWI0MWEtNDY4MS1hYjliLThhMjI3NTYwZGM3NS5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.FScrpAAFnKqBVKwe2syeiOww6mfH6avq-DRHZ_uFVNw"
-          alt="Netflix Logo"
+          src={BACKGROUND_IMAGE}
+          alt="Netflix Background"
         />
       </div>
       <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white">
