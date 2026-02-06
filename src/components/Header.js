@@ -6,12 +6,19 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { setUserInfo, clearUserInfo } from "../utils/userSlice";
-import { LOGO } from "../utils/constants";
+import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
+import { toggleGpt } from "../utils/gptSlice";
+import { setLanguage } from "../utils/configSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
+  const showgpt = useSelector((store) => store.gpt.showgpt);
+
+  const handleLanguageChange = (e) => {
+    dispatch(setLanguage(e.target.value));
+  };
 
   const handleSignOut = () => {
     signOut(auth)
@@ -23,12 +30,21 @@ const Header = () => {
       });
   };
 
+  const handleGptSearch = () => {
+    dispatch(toggleGpt());
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName, photoURL } = user;
         dispatch(
-          setUserInfo({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }),
+          setUserInfo({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          }),
         );
         navigate("/browse");
       } else {
@@ -49,6 +65,22 @@ const Header = () => {
       />
       {user && (
         <div className="justify-between flex items-center gap-4">
+          {showgpt && <select
+            className="bg-black/50 text-white p-2 rounded"
+            onChange={handleLanguageChange}
+          >
+            {SUPPORTED_LANGUAGES.map((lang) => (
+              <option key={lang.identifier} value={lang.identifier}>
+                {lang.label}
+              </option>
+            ))}
+          </select>}
+          <button
+            className="text-white bg-purple-600 p-2 font-bold rounded hover:bg-purple-700 transition"
+            onClick={handleGptSearch}
+          >
+            {showgpt ? "Home Page" : "GPT Search"}
+          </button>
           <img
             alt="usericon"
             className="w-8 h-8 rounded cursor-pointer"
