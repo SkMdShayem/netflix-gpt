@@ -2,9 +2,11 @@ import { API_OPTIONS } from "../utils/constants";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setTrailer } from "../utils/moviesSlice";
+import { useSelector } from "react-redux";
 
 const useMovieTrailer = (movieId) => {
   const dispatch = useDispatch();
+  const MovieTrailer = useSelector((store) => store.movies.Trailer);
 
   const getMovieVideo = async (id) => {
     // Logic to fetch and display video based on movieId
@@ -21,7 +23,7 @@ const useMovieTrailer = (movieId) => {
   };
 
   useEffect(() => {
-    if (movieId) {
+    if (movieId && (!MovieTrailer || MovieTrailer.movieId !== movieId)) {
       getMovieVideo(movieId);
     }
   }, [movieId]);

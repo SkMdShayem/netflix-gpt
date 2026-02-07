@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { setUserInfo, clearUserInfo } from "../utils/userSlice";
-import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
+import { LOGO, SUPPORTED_LANGUAGES, DEFAULT_AVATAR } from "../utils/constants";
 import { toggleGpt } from "../utils/gptSlice";
 import { setLanguage } from "../utils/configSlice";
 
@@ -86,9 +86,10 @@ const Header = () => {
             className="w-8 h-8 rounded cursor-pointer"
             src={
               user?.photoURL ||
-              "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+              DEFAULT_AVATAR
             }
           />
+          <span className="text-white">{user?.displayName || user?.email}</span>
           <button
             onClick={handleSignOut}
             className="text-white bg-red-600 p-2 font-bold rounded hover:bg-red-700 transition h-10"

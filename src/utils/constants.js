@@ -4,6 +4,9 @@ export const LOGO =
 export const USER_AVATAR =
   "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png";
 
+export const DEFAULT_AVATAR = 
+  "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y";
+
 export const BACKGROUND_IMAGE =
   "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f562aaf4-5dbb-4603-a32b-6ef6c2230136/dh0w8qv-9d8ee6b2-b41a-4681-ab9b-8a227560dc75.jpg/v1/fill/w_1192,h_670,q_70,strp/the_netflix_login_background__canada__2024___by_logofeveryt_dh0w8qv-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6Ii9mL2Y1NjJhYWY0LTVkYmItNDYwMy1hMzJiLTZlZjZjMjIzMDEzNi9kaDB3OHF2LTlkOGVlNmIyLWI0MWEtNDY4MS1hYjliLThhMjI3NTYwZGM3NS5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.FScrpAAFnKqBVKwe2syeiOww6mfH6avq-DRHZ_uFVNw";
 
@@ -12,7 +15,7 @@ export const API_OPTIONS = {
   headers: {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZmU5ZTE1YmJkYmJjMGMwNjE5NTUxNjBiYTU2MDZmMiIsIm5iZiI6MTczODczNzQ1Ny44MjksInN1YiI6IjY3YTMwNzMxNGZjZjY1OTVjYzhhNmJkMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.swfRemyU5wFqWLVbBTdGq5NGyHEDPsHOpbofL2t0Kug",
+      "Bearer " + process.env.REACT_APP_TMDB_KEY,
   },
 };
 
@@ -26,3 +29,5 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "bengali", label: "Bengali" },
   { identifier: "tamil", label: "Tamil" },
 ];
+
+export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
