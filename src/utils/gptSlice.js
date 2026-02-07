@@ -4,8 +4,8 @@ const gptSlice = createSlice({
   name: "gpt",
   initialState: {
     showgpt: false,
-    movieNames: [],
-    movieResults: [],
+    movieNames: null,
+    movieResults: null,
   },
   reducers: {
     toggleGpt: (state) => {

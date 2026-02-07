@@ -6,8 +6,8 @@ const MovieCard = ({ movie }) => {
         return null; // or a placeholder image
     }
     return (
-        <div className="w-48 flex-shrink-0">
-            <img src={IMG_BASE_URL + movie.poster_path} alt="Movie Poster" className="w-full h-auto rounded-lg" />
+        <div className="md:w-48 flex-shrink-0">
+            <img src={IMG_BASE_URL + movie.poster_path} alt="Movie Poster" className="w-36 md:w-full h-auto rounded-lg" />
             <h3 className="text-sm font-semibold mt-2 text-white">{movie.title}</h3>
         </div>
     )           

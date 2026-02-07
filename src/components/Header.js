@@ -57,7 +57,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="absolute top-0 left-0 w-full p-4 flex items-center bg-gradient-to-b from-black/70 to-transparent z-10 justify-between">
+    <div className="bg-black md:bg-transparent absolute top-0 left-0 w-full p-4 flex items-center bg-gradient-to-b from-black/70 to-transparent z-10 flex-col md:flex-row justify-between">
       <img
         className="w-32 h-12 object-contain cursor-pointer"
         src={LOGO}
@@ -76,7 +76,7 @@ const Header = () => {
             ))}
           </select>}
           <button
-            className="text-white bg-purple-600 p-2 font-bold rounded hover:bg-purple-700 transition"
+            className="text-white bg-white/10 p-2 font-bold rounded hover:bg-white/20 transition"
             onClick={handleGptSearch}
           >
             {showgpt ? "Home Page" : "GPT Search"}
@@ -92,7 +92,7 @@ const Header = () => {
           <span className="text-white">{user?.displayName || user?.email}</span>
           <button
             onClick={handleSignOut}
-            className="text-white bg-red-600 p-2 font-bold rounded hover:bg-red-700 transition h-10"
+            className="text-white bg-red-600 p-2 font-bold rounded hover:bg-red-700 transition"
           >
             Sign Out
           </button>

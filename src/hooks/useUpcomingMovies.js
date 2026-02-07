@@ -10,7 +10,6 @@ const useUpcomingMovies = () => {
 
   useEffect(() => {
     const getUpcomingMovies = async () => {
-      if (UpcomingMovies) return; // If we already have upcoming movies, don't fetch again
       const data = await fetch(
         "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
         API_OPTIONS
@@ -18,7 +17,9 @@ const useUpcomingMovies = () => {
         const json = await data.json();
         dispatch(setUpcomingMovies(json.results));
         };
+        if (!UpcomingMovies){
         getUpcomingMovies();
+        }
     }, [dispatch]);
 };
 

@@ -17,7 +17,7 @@ const  NowPlayingMovies = useSelector((store) => store.movies.NowPlayingMovies);
   };
 
   useEffect(() => {
-    if (!NowPlayingMovies || NowPlayingMovies.length === 0) {
+    if (!NowPlayingMovies) {
       getNowPlayingMovies();
     } 
   }, []);
